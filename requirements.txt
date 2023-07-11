@@ -1,3 +1,10 @@
-altair
-pandas
 streamlit
+langchain
+openai
+chromadb
+tiktoken
+configparser
+google-generativeai
+transformers
+huggingface_hub
+sentence_transformers
