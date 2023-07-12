@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
 import streamlit as st
 from langchain.vectorstores import Chroma
 from langchain.chains import RetrievalQA
@@ -57,7 +51,7 @@ st.set_page_config(page_title='Ask your Doc via PaLM🌴 Model , LangChain 🦜�
 st.title('Ask your Doc via PaLM🌴 Model , LangChain 🦜🔗 and Chroma')
 
 # File upload
-uploaded_file = st.file_uploader('Upload text file', type='pdf')
+uploaded_file = st.file_uploader('Upload text file', type='pdf',accept_multiple_files=true)
 
 # Query text
 query_text = st.text_input('Enter your question:', placeholder = 'Please provide a short summary.', disabled=not uploaded_file)
@@ -77,7 +71,9 @@ with st.form('myform', clear_on_submit=True):
 if len(result):
     st.markdown('**Answer:** **:blue[' + response['result'] + "]**")
     st.markdown('---')
+    
     st.markdown('**References:** ')
     for i, sd in enumerate(response['source_documents']):
-        st.markdown('**Ref ' + str(i) + '** :green[' + sd.page_content[:70] + "... ]")  
-
+        st.markdown('**Ref ' + str(i) + '** :green[' + sd.page_content[:70] + "... ]")
+        print(sd.metadata)
+        
