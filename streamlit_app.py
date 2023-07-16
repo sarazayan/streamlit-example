@@ -26,7 +26,7 @@ def generate_response(uploaded_file, google_api_key, query_text):
 
        # To convert to a string based IO:
         stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
-       st.write(stringio)
+        st.write(stringio)
 
         # To read file as string:
         string_data = stringio.read()
