@@ -55,7 +55,7 @@ st.set_page_config(page_title='Ask your Doc via PaLM🌴 Model , LangChain 🦜�
 st.title('Ask your Doc via PaLM🌴 Model , LangChain 🦜🔗 and Chroma')
 
 # File upload
-uploaded_file = st.file_uploader('Upload text file', type='txt')
+uploaded_file = st.file_uploader('Upload text file', type='txt',accept_multiple_files=True)
 
 
 
