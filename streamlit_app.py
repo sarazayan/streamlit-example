@@ -20,7 +20,7 @@ QA_CHAIN_PROMPT = PromptTemplate.from_template(template)
 def generate_response(uploaded_file, google_api_key, query_text):
     # Load document if file is uploaded
     if uploaded_file is not None:
-        documents = [uploaded_file.read().decode()]
+        documents = [loader_pdf.load()]
         
 
         
@@ -58,10 +58,10 @@ st.set_page_config(page_title='Ask your Doc via PaLM🌴 Model , LangChain 🦜�
 st.title('Ask your Doc via PaLM🌴 Model , LangChain 🦜🔗 and Chroma')
 
 # File upload
-uploaded_file = st.file_uploader('Upload TXT file', type='txt')
+uploaded_file = st.file_uploader('Upload TXT file', type='pdf')
 #pdf= st.file_uploader('Upload PDF file', type='pdf',accept_multiple_files=True)
 
-#loader_pdf = PyPDFLoader(uploaded_file)
+loader_pdf = PyPDFLoader(uploaded_file)
 #docs = loader_pdf.load()
 
 
