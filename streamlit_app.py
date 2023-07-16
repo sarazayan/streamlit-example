@@ -61,7 +61,7 @@ st.title('Ask your Doc via PaLM🌴 Model , LangChain 🦜🔗 and Chroma')
 uploaded_file = st.file_uploader('Upload TXT file', type='pdf')
 #pdf= st.file_uploader('Upload PDF file', type='pdf',accept_multiple_files=True)
 
-loader_pdf = PyPDFLoader(2021_02_04_PR_Carbon_Neutrality_objectives.pdf)
+loader_pdf = PyPDFLoader('2021_02_04_PR_Carbon_Neutrality_objectives.pdf')
 #docs = loader_pdf.load()
 
 
