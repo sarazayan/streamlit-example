@@ -17,10 +17,10 @@ Question: {question}
 Helpful Answer:"""
 QA_CHAIN_PROMPT = PromptTemplate.from_template(template)
 
-def generate_response(uploaded_file, google_api_key, query_text):
+def generate_response(docs, google_api_key, query_text):
     # Load document if file is uploaded
-    if uploaded_file is not None:
-        documents = [uploaded_file.read().decode()]
+    if docs is not None:
+        documents = [docs.read().decode()]
         
 
         
@@ -58,26 +58,26 @@ st.set_page_config(page_title='Ask your Doc via PaLM🌴 Model , LangChain 🦜�
 st.title('Ask your Doc via PaLM🌴 Model , LangChain 🦜🔗 and Chroma')
 
 # File upload
-uploaded_file = st.file_uploader('Upload txt file', type='txt')
+uploaded_file = st.file_uploader('Upload txt file', type='pdf')
 #pdf= st.file_uploader('Upload PDF file', type='pdf',accept_multiple_files=True)
 
-#loader_pdf = PyPDFLoader(uploaded_file)
-#docs = loader_pdf.load()
+loader_pdf = PyPDFLoader(uploaded_file)
+docs = loader_pdf.load()
 
 
 
 # Query text
-query_text = st.text_input('Enter your question:', placeholder = 'Please provide a short summary.', disabled=not uploaded_file)
+query_text = st.text_input('Enter your question:', placeholder = 'Please provide a short summary.', disabled=not docs)
 
 # Form input and query
 result = []
 with st.form('myform', clear_on_submit=True):
-    google_api_key = st.text_input('Google PaLM🌴 API Key', type='password', disabled=not (uploaded_file and query_text))
-    submitted = st.form_submit_button('Submit', disabled=not(uploaded_file and query_text))
+    google_api_key = st.text_input('Google PaLM🌴 API Key', type='password', disabled=not (docs and query_text))
+    submitted = st.form_submit_button('Submit', disabled=not(docs and query_text))
     #if submitted and openai_api_key.startswith('AIz'):
     if submitted and google_api_key:
         with st.spinner('Calculating...'):
-            response = generate_response(uploaded_file, google_api_key, query_text)
+            response = generate_response(docs, google_api_key, query_text)
             result.append(response)
             del google_api_key
 
