@@ -62,7 +62,7 @@ uploaded_file = st.file_uploader('Upload PDF file', type='pdf')
 #pdf= st.file_uploader('Upload PDF file', type='pdf',accept_multiple_files=True)
 
 loader_pdf = PyPDFLoader(uploaded_file)
-docs = loader_pdf.load()
+#docs = loader_pdf.load()
 
 
 
