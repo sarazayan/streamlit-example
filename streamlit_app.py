@@ -58,10 +58,10 @@ st.set_page_config(page_title='Ask your Doc via PaLM🌴 Model , LangChain 🦜�
 st.title('Ask your Doc via PaLM🌴 Model , LangChain 🦜🔗 and Chroma')
 
 # File upload
-uploaded_file = st.file_uploader('Upload PDF file', type='pdf')
+uploaded_file = st.file_uploader('Upload txt file', type='txt')
 #pdf= st.file_uploader('Upload PDF file', type='pdf',accept_multiple_files=True)
 
-loader_pdf = PyPDFLoader(uploaded_file)
+#loader_pdf = PyPDFLoader(uploaded_file)
 #docs = loader_pdf.load()
 
 
