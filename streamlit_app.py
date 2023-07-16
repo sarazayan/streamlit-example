@@ -5,6 +5,7 @@ from langchain.llms import GooglePalm
 from langchain.embeddings import GooglePalmEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.prompts import PromptTemplate
+from io import StringIO
 
 
 # Build prompt
