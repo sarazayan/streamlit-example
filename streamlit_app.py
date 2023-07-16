@@ -17,21 +17,8 @@ QA_CHAIN_PROMPT = PromptTemplate.from_template(template)
 
 def generate_response(uploaded_file, google_api_key, query_text):
     # Load document if file is uploaded
-    #if uploaded_file is not None:
-        #documents = [uploaded_file.read().decode()]
-
     if uploaded_file is not None:
-       # To read file as bytes:
-        bytes_data = uploaded_file.getvalue()
-        st.write(bytes_data)
-
-       # To convert to a string based IO:
-        stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
-        st.write(stringio)
-
-        # To read file as string:
-        string_data = stringio.read()
-        st.write(string_data)
+        documents = [uploaded_file.read().decode()]
 
         
         
