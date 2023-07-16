@@ -55,10 +55,10 @@ st.title('Ask your Doc via PaLM🌴 Model , LangChain 🦜🔗 and Chroma')
 #uploaded_file = st.file_uploader('Upload text file', type='txt')
 
 
-uploaded_files = st.file_uploader("Choose a PDF file", type='pdf',accept_multiple_files=True)
-for uploaded_file in uploaded_files:
-    bytes_data = uploaded_file.read()
-    st.write("filename:", uploaded_file.name)
+uploaded_file = st.file_uploader("Choose a PDF file", type='pdf',accept_multiple_files=True)
+for x in uploaded_file:
+    bytes_data = x.read()
+    st.write("filename:", x.name)
     st.write(bytes_data)
 
 
