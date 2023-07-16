@@ -19,7 +19,7 @@ QA_CHAIN_PROMPT = PromptTemplate.from_template(template)
 
 def generate_response(uploaded_file, google_api_key, query_text):
     # Load document if file is uploaded
-    if loader_pdf is not None:
+    if uploaded_file is not None:
         documents = [uploaded_file.read().decode()]
         
 
