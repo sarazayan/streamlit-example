@@ -6,6 +6,7 @@ from langchain.embeddings import GooglePalmEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.prompts import PromptTemplate
 from io import StringIO
+from PyPDF2 import PdfReader
 
 
 # Build prompt
