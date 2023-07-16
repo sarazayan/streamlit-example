@@ -22,7 +22,7 @@ def generate_response(uploaded_file, google_api_key, query_text):
         # Split documents into chunks
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=512, chunk_overlap=32, separators=["\n\n", "\n", ",", " ", "."])
         texts = text_splitter.create_documents(documents)
-        len(texts)
+        st.write(len(texts))
         
         # Select embeddings
         embeddings = GooglePalmEmbeddings(google_api_key=google_api_key)
