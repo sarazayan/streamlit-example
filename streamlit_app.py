@@ -55,7 +55,13 @@ st.set_page_config(page_title='Ask your Doc via PaLM🌴 Model , LangChain 🦜�
 st.title('Ask your Doc via PaLM🌴 Model , LangChain 🦜🔗 and Chroma')
 
 # File upload
-uploaded_file = st.file_uploader('Upload text file', type='pdf',accept_multiple_files=True)
+#uploaded_file = st.file_uploader('Upload PDF file', type='pdf',accept_multiple_files=True)
+    # extract the text
+    if pdf is not None:
+        pdf_reader = PdfReader(pdf)
+        text = ""
+        for page in pdf_reader.pages:
+            text += page.extract_text()
 
 
 
