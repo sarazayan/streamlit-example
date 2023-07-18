@@ -45,10 +45,8 @@ def generate_response(uploaded_file, google_api_key, query_text):
         #qa = RetrievalQA.from_chain_type(llm=GooglePalm(google_api_key=google_api_key, temperature=0.1, max_output_tokens=128), chain_type="stuff", retriever=retriever)
         qa = RetrievalQA.from_chain_type(llm=GooglePalm(google_api_key=google_api_key, temperature=0.1, max_output_tokens=128),
                                          chain_type="stuff",
-                                         retriever=retriever,
-                                         #return_source_documents=True,
-                                        ,retriever=db.as_retriever(search_kwargs={"k": 3}
-                                         chain_type_kwargs={"prompt": QA_CHAIN_PROMPT})
+                                         retriever=db.as_retriever(search_kwargs={"k": 3},
+                                         return_source_documents=True,chain_type_kwargs={"prompt": QA_CHAIN_PROMPT})
 
     
                                   
