@@ -26,7 +26,7 @@ def generate_response(uploaded_file, google_api_key, query_text):
         
         
         # Split documents into chunks
-        text_splitter = RecursiveCharacterTextSplitter(chunk_size=512, chunk_overlap=32, separators=["\n\n", "\n", ",", " ", "."])
+        text_splitter = RecursiveCharacterTextSplitter(chunk_size=1024, chunk_overlap=64, separators=["\n\n", "\n", ",", " ", "."])
         texts = text_splitter.create_documents(documents)
         st.write(len(texts))
         
