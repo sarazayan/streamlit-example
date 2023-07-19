@@ -38,7 +38,7 @@ def generate_response(uploaded_file, google_api_key, query_text):
         
         # Create retriever interface
         #retriever = db.as_retriever(k=3)
-        retriever=docsearch.as_retriever(search_kwargs={"k": 1})
+        retriever=db.as_retriever(search_kwargs={"k": 1})
         # retriever = db.as_retriever(k=2, fetch_k=4)
         # retriever = db.as_retriever(search_type="similarity_score_threshold", search_kwargs={"score_threshold": .9})
         
