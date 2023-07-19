@@ -37,7 +37,7 @@ def generate_response(uploaded_file, google_api_key, query_text):
         db = Chroma.from_documents(texts, embeddings) 
         
         # Create retriever interface
-        retriever = db.as_retriever(k=3)
+        retriever = db.as_retriever(k=1)
         # retriever = db.as_retriever(k=2, fetch_k=4)
         # retriever = db.as_retriever(search_type="similarity_score_threshold", search_kwargs={"score_threshold": .9})
         
@@ -81,7 +81,7 @@ with st.form('myform', clear_on_submit=True):
     if submitted and google_api_key:
         with st.spinner('Calculating...'):
             response = generate_response(uploaded_file, google_api_key, query_text)
-            st.write(response[1])
+            st.write(response[0])
             result.append(response)
             del google_api_key
 
