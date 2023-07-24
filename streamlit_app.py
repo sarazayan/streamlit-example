@@ -18,6 +18,7 @@ QA_CHAIN_PROMPT = PromptTemplate.from_template(template)
 def generate_response(uploaded_file, google_api_key, query_text):
     # Load document if file is uploaded
     if uploaded_file is not None:
+      for uploaded_file in uploaded_files:  
         with NamedTemporaryFile(dir='.', suffix='.pdf') as f:
             f.write(uploaded_file.getbuffer())
             loader = PyPDFLoader(f.name)
@@ -58,7 +59,7 @@ st.title('Ask your PDF via PaLM🌴 Model , LangChain 🦜🔗 and Chroma vector
 
 # File upload
 #uploaded_file = st.file_uploader('Upload text file', type='txt')
-uploaded_file = st.file_uploader('Upload pdf file', type='pdf',accept_multiple_files=True)
+uploaded_files = st.file_uploader('Upload pdf file', type='pdf',accept_multiple_files=True)
 
 # Query text
 query_text = st.text_input('Enter your question:', placeholder = 'Please provide a short summary.', disabled=not uploaded_file)
