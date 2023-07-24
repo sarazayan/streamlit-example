@@ -15,7 +15,7 @@ Question: {question}
 Helpful Answer:"""
 QA_CHAIN_PROMPT = PromptTemplate.from_template(template)
 
-def generate_response(uploaded_file, google_api_key, query_text):
+def generate_response(uploaded_files, google_api_key, query_text):
     # Load document if file is uploaded
     for uploaded_file in uploaded_files: 
         if uploaded_file is not None:
@@ -63,13 +63,13 @@ def generate_response(uploaded_file, google_api_key, query_text):
     uploaded_files = st.file_uploader('Upload pdf file', type='pdf',accept_multiple_files=True)
     
     # Query text
-    query_text = st.text_input('Enter your question:', placeholder = 'Please provide a short summary.', disabled=not uploaded_file)
+    query_text = st.text_input('Enter your question:', placeholder = 'Please provide a short summary.', disabled=not uploaded_files)
     
     # Form input and query
     result = []
     with st.form('myform', clear_on_submit=True):
-        google_api_key = st.text_input('Google PaLM🌴 API Key', type='password', disabled=not (uploaded_file and query_text))
-        submitted = st.form_submit_button('Submit', disabled=not(uploaded_file and query_text))
+        google_api_key = st.text_input('Google PaLM🌴 API Key', type='password', disabled=not (uploaded_files and query_text))
+        submitted = st.form_submit_button('Submit', disabled=not(uploaded_files and query_text))
         if submitted and google_api_key:
             with st.spinner('Calculating...'):
                 response = generate_response(uploaded_file, google_api_key, query_text)
